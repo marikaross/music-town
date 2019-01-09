@@ -7,7 +7,7 @@ export default Component.extend({
   rating: 0,
   maxRating: 5,
   item: null,
-  onClick: '',
+  "on-click": null,
 
   stars: computed('rating', 'maxRating', function() {
     var fullStars = this.starRange(1, this.get('rating'), 'full');
@@ -29,7 +29,7 @@ export default Component.extend({
       this.sendAction('onClick', {
         item: this.get('item'),
         rating: newRating
-      });
+      })
     }
   }
 });
