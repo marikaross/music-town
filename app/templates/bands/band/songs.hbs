@@ -1,4 +1,10 @@
 <ul class="list-group songs">
+  {{#unless canCreateSong}}
+  <li class="list-group-item empty-list">
+    <div class="empty-message">There are no songs yet.  Why don't you <a href="#" {{action "enableSongCreation"}}>create one?</a>
+  </div>
+</li>
+{{/unless}}
   {{#if canCreateSong}}
   <li class="list-group-item">
     <form class="new-song-form" {{action "createSong" on="submit"}}>
@@ -15,10 +21,4 @@
     {{star-rating rating=song.rating item=song on-click=(action "updateRating")}}
   </li>
   {{/each}}
-  {{#unless canCreateSong}}
-  <li class="list-group-item empty-list">
-    <div class="empty-message">There are no songs yet.  Why don't you <a href="#" {{action "enableSongCreation"}}>create one?</a>
-  </div>
-</li>
-{{/unless}}
 </ul>
